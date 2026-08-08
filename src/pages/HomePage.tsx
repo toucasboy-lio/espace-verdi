@@ -1,31 +1,12 @@
-import {
-  faBuilding,
-  faCar,
-  faChartLine,
-  faEye,
-  faPuzzlePiece,
-  faWheelchair,
-} from '@fortawesome/free-solid-svg-icons';
 import Badge from '../components/Badge';
 import CTAButton from '../components/CTAButton';
-import FeatureCard from '../components/FeatureCard';
 import OfferCard from '../components/OfferCard';
 import PlaceholderImage from '../components/PlaceholderImage';
 import SectionTitle from '../components/SectionTitle';
 import { projectData } from '../data/lots';
 
-/** Icônes associées aux atouts clés (ordre aligné sur keyFeatures) */
-const featureIcons = [
-  faEye,
-  faCar,
-  faWheelchair,
-  faPuzzlePiece,
-  faChartLine,
-  faBuilding,
-];
-
 /**
- * Page d'accueil — Hero, atouts, teaser offres, CTA simulateur.
+ * Page d'accueil — Hero, teaser offres, CTA simulateur.
  */
 function HomePage() {
   const { projectInfo, projectImages, configurations } = projectData;
@@ -42,10 +23,10 @@ function HomePage() {
           className="absolute inset-0 min-h-[70vh]"
         />
         <div className="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 md:px-6">
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+          <h1 className="max-w-5xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             Votre patrimoine professionnel sur l&apos;axe RD 554
           </h1>
-          <p className="mt-6 max-w-2xl text-lg  md:text-xl">
+          <p className="mt-6 max-w-3xl text-lg md:text-xl">
             {projectInfo.locationDetails}. {projectInfo.totalLotsCount} lots
             tertiaires modulables pour bureaux, cabinets médicaux et
             professions libérales.
@@ -66,25 +47,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Atouts clés */}
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-6">
-        <SectionTitle
-          title="Les atouts du programme"
-          subtitle="Un emplacement premium et des locaux pensés pour les professionnels exigeants."
-          align="center"
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projectInfo.keyFeatures.map((feature, index) => (
-            <FeatureCard
-              key={feature}
-              icon={featureIcons[index % featureIcons.length]}
-              title={feature.split('(')[0].trim()}
-              description={feature}
-            />
-          ))}
-        </div>
-      </section>
-
       {/* Teaser des 3 configurations */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -93,7 +55,7 @@ function HomePage() {
             subtitle="Des formats adaptés à votre activité, cumulables pour agrandir votre surface."
             align="center"
           />
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2">
             {configurations.map((config) => (
               <OfferCard key={config.id} configuration={config} compact />
             ))}

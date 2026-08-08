@@ -10,7 +10,7 @@ function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-navy text-white">
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-6">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {/* Coordonnées */}
           <div>
             <h3 className="mb-4 text-lg font-semibold">{projectInfo.name}</h3>

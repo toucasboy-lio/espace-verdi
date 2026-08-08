@@ -19,7 +19,7 @@ function OffersPage() {
       />
 
       {/* Grille des 3 configurations */}
-      <div className="grid gap-10 lg:grid-cols-3">
+      <div className="grid gap-10 lg:grid-cols-2">
         {configurations.map((config) => (
           <OfferCard key={config.id} configuration={config} />
         ))}
@@ -33,13 +33,13 @@ function OffersPage() {
           </div>
           <div>
             <h3 className="text-xl font-bold text-navy">
-              Modularité & cumul des {projectInfo.totalLotsCount} lots
+              Modularité
             </h3>
             <p className="mt-4 leading-relaxed text-slate-600">
-              Le programme Espace VERDI comprend {projectInfo.totalLotsCount}{' '}
+              Le programme Espace VERDI comprend une vingtaine de 
               lots tertiaires indépendants, modulables et combinables. Vous
-              pouvez acquérir un module solo pour démarrer, puis agrandir en
-              assemblant des lots contigus pour créer un plateau cabinet, une
+              pouvez acquérir un module solo ou bien 
+              assembler des lots contigus pour créer un plateau cabinet, une
               équipe médicale ou un centre paramédical complet.
             </p>
             <p className="mt-4 leading-relaxed text-slate-600">

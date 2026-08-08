@@ -96,7 +96,7 @@ function ContactPage() {
           <div className="rounded-2xl bg-navy p-8 text-white">
             <h3 className="text-xl font-bold">Programme Espace VERDI</h3>
             <p className="mt-4 text-slate-300">
-              {projectInfo.totalLotsCount} lots tertiaires modulables — livraison{' '}
+              Une vingtaine de lots tertiaires modulables — livraison{' '}
               <span className="font-semibold text-emerald-brand">
                 {projectInfo.deliveryDate}
               </span>

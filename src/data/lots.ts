@@ -27,10 +27,16 @@ export interface ProjectImages {
   };
 }
 
-/** Valeurs par défaut et texte légal du simulateur SCI */
+/** Valeurs par défaut et texte légal du simulateur d'acquisition */
 export interface SimulationDefaults {
-  defaultMonthlyRent: number;
+  defaultOfficePriceHT: number;
+  defaultAmenagement: number;
+  defaultPersonalContribution: number;
   defaultYears: number;
+  interestRate: number;
+  officePriceMin: number;
+  officePriceMax: number;
+  personalContributionMax: number;
   tvaNotice: string;
 }
 
@@ -65,7 +71,7 @@ export const projectData: ProjectData = {
     email: 'contact@espace-verdi.fr',
     deliveryDate: '2028',
     deliveryCondition:
-      'Locaux livrés bruts de béton, fluides en attente (Aménagement 100% sur-mesure)',
+      'Locaux livrés bruts de béton, fluides en attente (Aménagement libre)',
     totalLotsCount: 20,
     keyFeatures: [
       "Forte visibilité sur l'axe très passant RD 554",
@@ -90,10 +96,16 @@ export const projectData: ProjectData = {
     },
   },
   simulationDefaults: {
-    defaultMonthlyRent: 1200,
+    defaultOfficePriceHT: 149000,
+    defaultAmenagement: 50000,
+    defaultPersonalContribution: 20000,
     defaultYears: 15,
+    interestRate: 3.5,
+    officePriceMin: 99000,
+    officePriceMax: 299000,
+    personalContributionMax: 100000,
     tvaNotice:
-      "En optant pour la TVA via une SCI, vous récupérez 20% de TVA sur l'acquisition et le loyer versé par votre société d'exploitation rembourse le crédit.",
+      "Inclus : Récupération de la TVA (20 %) sur l'acquisition et les travaux d'aménagement via le montage SCI.",
   },
   configurations: [
     {
@@ -132,16 +144,6 @@ export const projectData: ProjectData = {
 /** Retrouve une configuration par son identifiant */
 export function getConfigurationById(id: string): Configuration | undefined {
   return projectData.configurations.find((config) => config.id === id);
-}
-
-/** Calcule le prix TTC moyen des 3 configurations (base simulateur SCI) */
-export function getAverageStartingPrice(): number {
-  const { configurations } = projectData;
-  const total = configurations.reduce(
-    (sum, config) => sum + config.startingPriceHT,
-    0,
-  );
-  return Math.round(total / configurations.length);
 }
 
 /** Formate un montant en euros (locale fr-FR) */

@@ -15,15 +15,19 @@ function SectionTitle({
   subtitle,
   align = 'left',
 }: SectionTitleProps) {
-  const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left';
-
   return (
-    <div className={`mb-10 max-w-3xl ${alignment}`}>
+    <div className={`mb-10 ${align === 'center' ? 'text-center' : 'text-left'}`}>
       <h2 className="text-3xl font-bold tracking-tight text-navy md:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-lg leading-relaxed text-slate-600">{subtitle}</p>
+        <p
+          className={`mt-3 max-w-3xl text-lg leading-relaxed text-slate-600 ${
+            align === 'center' ? 'mx-auto' : ''
+          }`}
+        >
+          {subtitle}
+        </p>
       )}
     </div>
   );

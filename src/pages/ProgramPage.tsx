@@ -1,7 +1,11 @@
 import {
   faBuilding,
   faCalendarCheck,
+  faCar,
+  faChartLine,
+  faEye,
   faHardHat,
+  faPuzzlePiece,
   faRoad,
   faStethoscope,
   faWheelchair,
@@ -11,6 +15,16 @@ import FeatureCard from '../components/FeatureCard';
 import PlaceholderImage from '../components/PlaceholderImage';
 import SectionTitle from '../components/SectionTitle';
 import { projectData } from '../data/lots';
+
+/** Icônes associées aux atouts clés (ordre aligné sur keyFeatures) */
+const featureIcons = [
+  faEye,
+  faCar,
+  faWheelchair,
+  faPuzzlePiece,
+  faChartLine,
+  faBuilding,
+];
 
 /**
  * Page Programme — Présentation détaillée du bâtiment et calendrier.
@@ -22,7 +36,7 @@ function ProgramPage() {
     <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <SectionTitle
         title="Le programme Espace VERDI"
-        subtitle={`${projectInfo.totalLotsCount} lots tertiaires modulables à Néoules, sur l'axe très passant RD 554.`}
+        subtitle={`Une vingtaine de lots tertiaires modulables à Néoules, sur l'axe très passant RD 554.`}
       />
 
       {/* Présentation générale */}
@@ -43,6 +57,25 @@ function ProgramPage() {
           </div>
         </div>
       </div>
+
+      {/* Atouts clés */}
+      <section className="mb-20">
+        <SectionTitle
+          title="Les atouts du programme"
+          subtitle="Un emplacement premium et des locaux pensés pour les professionnels exigeants."
+          align="center"
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projectInfo.keyFeatures.map((feature, index) => (
+            <FeatureCard
+              key={feature}
+              icon={featureIcons[index % featureIcons.length]}
+              title={feature.split('(')[0].trim()}
+              description={feature}
+            />
+          ))}
+        </div>
+      </section>
 
       {/* Sections illustrées */}
       <div className="grid gap-12 lg:grid-cols-2">
@@ -73,11 +106,6 @@ function ProgramPage() {
         </div>
 
         <div>
-          <PlaceholderImage
-            src={projectImages.programme.pmr}
-            alt="Accès PMR et ascenseur vers le R+1"
-            aspectRatio="4/3"
-          />
           <FeatureCard
             icon={faWheelchair}
             title="Accessibilité PMR intégrale"
