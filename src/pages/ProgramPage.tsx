@@ -4,6 +4,7 @@ import {
   faCar,
   faChartLine,
   faEye,
+  faFileSignature,
   faPuzzlePiece,
   faStethoscope,
   faWheelchair,
@@ -23,6 +24,7 @@ const featureIconByIndex: IconDefinition[] = [
   faPuzzlePiece,
   faChartLine,
   faBuilding,
+  faFileSignature,
 ];
 
 function IllustratedFeature({

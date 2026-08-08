@@ -39,6 +39,10 @@ export interface SimulationDefaults {
   officePriceMin: number;
   officePriceMax: number;
   personalContributionMax: number;
+  /** Taux indicatif frais de notaire VEFA (immeuble neuf), en % du prix HT */
+  notaryFeeRate: number;
+  /** Taux indicatif frais de notaire en immobilier ancien, pour comparaison */
+  notaryFeeRateOld: number;
   tvaNotice: string;
 }
 
@@ -92,7 +96,7 @@ export const projectData: ProjectData = {
         title: 'Accessibilité PMR intégrale',
         description:
           'Accès PMR en RDC et R+1 via ascenseur adapté, conforme aux normes en vigueur. Le bâtiment accueille tous vos patients et clients, sans compromis sur le confort ni la conformité.',
-      },
+       },
       {
         title: 'Lots modulables et combinables',
         description:
@@ -107,6 +111,11 @@ export const projectData: ProjectData = {
         title: 'Liberté totale d\'aménagement',
         description:
           'Locaux livrés bruts de béton avec fluides en attente : vous concevez l\'agencement qui correspond exactement à votre métier, du cabinet médical au plateau open space, sans compromis imposé.',
+      },
+      {
+        title: 'Frais de notaire réduits',
+        description:
+          "Vente en l'état futur d'achèvement (VEFA) sur un immeuble neuf, jamais habité ni utilisé : vous bénéficiez de frais de notaire réduits, environ 2 à 3 % du prix HT (contre 7 à 8 % en immobilier ancien).",
       },
     ],
     targetActivities: [
@@ -127,6 +136,8 @@ export const projectData: ProjectData = {
     officePriceMin: 99000,
     officePriceMax: 299000,
     personalContributionMax: 100000,
+    notaryFeeRate: 2.5,
+    notaryFeeRateOld: 7.5,
     tvaNotice:
       "Inclus : Récupération de la TVA (20 %) sur l'acquisition et les travaux d'aménagement via le montage SCI.",
   },

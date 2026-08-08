@@ -1,6 +1,7 @@
 import {
   faCalculator,
   faChartLine,
+  faCircleInfo,
   faPercent,
   faShieldHalved,
 } from '@fortawesome/free-solid-svg-icons';
@@ -48,8 +49,13 @@ function computeAcquisitionSimulation(
   contribution: number,
   years: number,
   interestRate: number,
+  notaryFeeRate: number,
+  notaryFeeRateOld: number,
 ) {
-  const totalProject = officePrice + amenagement;
+  const notaryFees = Math.round((officePrice * notaryFeeRate) / 100);
+  const notaryFeesOld = Math.round((officePrice * notaryFeeRateOld) / 100);
+  const notarySavings = Math.max(0, notaryFeesOld - notaryFees);
+  const totalProject = officePrice + amenagement + notaryFees;
   const effectiveContribution = Math.min(contribution, totalProject);
   const loanAmount = Math.max(0, totalProject - effectiveContribution);
 
@@ -65,6 +71,9 @@ function computeAcquisitionSimulation(
 
   return {
     totalProject,
+    notaryFees,
+    notaryFeesOld,
+    notarySavings,
     monthlyPayment,
     effectiveContribution,
     loanAmount,
@@ -76,8 +85,10 @@ function computeAcquisitionSimulation(
  */
 function SimulationPage() {
   const { simulationDefaults } = projectData;
-  const { interestRate } = simulationDefaults;
+  const { interestRate, notaryFeeRate, notaryFeeRateOld } = simulationDefaults;
   const formattedRate = interestRate.toLocaleString('fr-FR');
+  const formattedNotaryRate = notaryFeeRate.toLocaleString('fr-FR');
+  const formattedNotaryRateOld = notaryFeeRateOld.toLocaleString('fr-FR');
 
   const [officePrice, setOfficePrice] = useState(
     simulationDefaults.defaultOfficePriceHT,
@@ -89,19 +100,37 @@ function SimulationPage() {
     simulationDefaults.defaultPersonalContribution,
   );
   const [years, setYears] = useState(simulationDefaults.defaultYears);
+  const [showNotaryInfo, setShowNotaryInfo] = useState(false);
 
-  const { totalProject, monthlyPayment, effectiveContribution, loanAmount } =
-    useMemo(
-      () =>
-        computeAcquisitionSimulation(
-          officePrice,
-          amenagement,
-          contribution,
-          years,
-          interestRate,
-        ),
-      [officePrice, amenagement, contribution, years, interestRate],
-    );
+  const {
+    totalProject,
+    notaryFees,
+    notaryFeesOld,
+    notarySavings,
+    monthlyPayment,
+    effectiveContribution,
+    loanAmount,
+  } = useMemo(
+    () =>
+      computeAcquisitionSimulation(
+        officePrice,
+        amenagement,
+        contribution,
+        years,
+        interestRate,
+        notaryFeeRate,
+        notaryFeeRateOld,
+      ),
+    [
+      officePrice,
+      amenagement,
+      contribution,
+      years,
+      interestRate,
+      notaryFeeRate,
+      notaryFeeRateOld,
+    ],
+  );
 
   const handleAmenagementChange = (value: string) => {
     const parsed = Number(value);
@@ -211,10 +240,50 @@ function SimulationPage() {
 
         {/* Bloc résultat */}
         <div className="flex flex-col justify-center rounded-xl border border-emerald-brand/20 bg-emerald-brand/5 p-8 md:p-10">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge label={`${years} ans`} variant="emerald" />
             <Badge label={`${formattedRate} %`} variant="emerald" />
             <Badge label={`Emprunt ${formatEuro(loanAmount)}`} variant="navy" />
+            <div className="relative">
+              <div className="inline-flex items-center gap-1">
+                <Badge
+                  label={`Notaire ${formatEuro(notaryFees)} (réduit)`}
+                  variant="emerald"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowNotaryInfo((open) => !open)}
+                  aria-expanded={showNotaryInfo}
+                  aria-label="Comparer les frais de notaire VEFA et immobilier ancien"
+                  className="flex h-6 w-6 items-center justify-center rounded-full text-emerald-brand/70 transition-colors hover:bg-emerald-brand/10 hover:text-emerald-brand"
+                >
+                  <FontAwesomeIcon icon={faCircleInfo} className="text-sm" />
+                </button>
+              </div>
+              {showNotaryInfo && (
+                <div
+                  role="tooltip"
+                  className="absolute left-0 top-full z-10 mt-2 w-80 rounded-lg border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-600 shadow-lg"
+                >
+                  <p className="font-semibold text-navy">Frais de notaire réduits</p>
+                  <p className="mt-2">
+                    VEFA sur immeuble neuf :{' '}
+                    <span className="font-medium text-emerald-brand">
+                      {formattedNotaryRate} % ({formatEuro(notaryFees)})
+                    </span>
+                  </p>
+                  <p className="mt-1">
+                    Immobilier ancien :{' '}
+                    <span className="font-medium text-slate-500">
+                      {formattedNotaryRateOld} % ({formatEuro(notaryFeesOld)})
+                    </span>
+                  </p>
+                  <p className="mt-3 border-t border-slate-100 pt-3 font-medium text-navy">
+                    Économie estimée : {formatEuro(notarySavings)}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
           <p className="mt-6 text-sm font-medium uppercase tracking-wide text-slate-500">
@@ -225,7 +294,7 @@ function SimulationPage() {
           </p>
           <p className="text-lg font-medium text-slate-600">/ mois</p>
           <p className="mt-2 text-sm text-slate-600">
-            Calcul sur {years} ans à {formattedRate} % (hors assurance)
+            Calcul sur {years} ans à {formattedRate} % (assurance incluse)
           </p>
 
           <div className="mt-8 border-t border-emerald-brand/20 pt-8">
@@ -234,7 +303,7 @@ function SimulationPage() {
               bureaux
             </p>
             <p className="mt-4 text-xl font-bold text-emerald-brand transition-all duration-300 md:text-2xl">
-              Patrimoine constitué : {formatEuro(totalProject)} HT
+              Patrimoine constitué : {formatEuro(totalProject)}
             </p>
           </div>
 

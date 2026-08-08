@@ -5,6 +5,15 @@ import PlaceholderImage from '../components/PlaceholderImage';
 import SectionTitle from '../components/SectionTitle';
 import { projectData } from '../data/lots';
 
+const heroBadges = [
+  'À partir de 40 m²',
+  'Aménagement libre',
+  'Parking clients & collaborateurs dédié',
+  'Direct Promoteur',
+  'Livraison 2028',
+  'Pré-commercialisation en cours',
+];
+
 /**
  * Page d'accueil — Hero, teaser offres, CTA simulateur.
  */
@@ -26,14 +35,14 @@ function HomePage() {
             Votre patrimoine professionnel sur l&apos;axe RD 554
           </h1>
           <p className="mt-6 max-w-3xl text-lg text-slate-200 md:text-xl">
-            {projectInfo.locationDetails}. Une vigntaine de lots
+            {projectInfo.locationDetails}. Une vingtaine de lots
             tertiaires modulables pour bureaux, cabinets médicaux et
             professions libérales.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Badge label={projectInfo.deliveryDate} variant="emerald" />
-            <Badge label="Brut de béton" variant="light" />
-            <Badge label="RD 554" variant="light" />
+          <div className="mt-8 flex flex-wrap gap-2 sm:gap-3">
+            {heroBadges.map((label) => (
+              <Badge key={label} label={label} variant="hero" />
+            ))}
           </div>
           <div className="mt-10 flex flex-wrap gap-4">
             <CTAButton to="/simulation" variant="emerald">
