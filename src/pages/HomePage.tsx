@@ -20,27 +20,30 @@ function HomePage() {
           alt="Immeuble tertiaire Espace VERDI sur l'axe RD 554"
           cover
           showOverlay
-          className="absolute inset-0 min-h-[70vh]"
         />
-        <div className="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 md:px-6">
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 text-white md:px-6">
           <h1 className="max-w-5xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             Votre patrimoine professionnel sur l&apos;axe RD 554
           </h1>
-          <p className="mt-6 max-w-3xl text-lg md:text-xl">
-            {projectInfo.locationDetails}. {projectInfo.totalLotsCount} lots
+          <p className="mt-6 max-w-3xl text-lg text-slate-200 md:text-xl">
+            {projectInfo.locationDetails}. Une vigntaine de lots
             tertiaires modulables pour bureaux, cabinets médicaux et
             professions libérales.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Badge label={projectInfo.deliveryDate} variant="emerald" />
-            <Badge label="Brut de béton" />
-            <Badge label="RD 554" />
+            <Badge label="Brut de béton" variant="light" />
+            <Badge label="RD 554" variant="light" />
           </div>
           <div className="mt-10 flex flex-wrap gap-4">
             <CTAButton to="/simulation" variant="emerald">
               Simuler mon patrimoine SCI
             </CTAButton>
-            <CTAButton to="/offres" variant="outline" className="border-white hover:bg-white hover:text-navy">
+            <CTAButton
+              to="/offres"
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-navy"
+            >
               Découvrir les offres
             </CTAButton>
           </div>

@@ -1,8 +1,8 @@
 interface BadgeProps {
   /** Texte affiché dans la pastille */
   label: string;
-  /** Variante visuelle : navy (défaut) ou emerald (conversion) */
-  variant?: 'navy' | 'emerald';
+  /** Variante visuelle : navy (défaut), emerald (conversion) ou light (fond sombre) */
+  variant?: 'navy' | 'emerald' | 'light';
 }
 
 /**
@@ -12,7 +12,9 @@ function Badge({ label, variant = 'navy' }: BadgeProps) {
   const styles =
     variant === 'emerald'
       ? 'bg-emerald-brand/10 text-emerald-brand border-emerald-brand/20'
-      : 'bg-navy/5 text-navy border-navy/10';
+      : variant === 'light'
+        ? 'bg-white/15 text-white border-white/25'
+        : 'bg-navy/5 text-navy border-navy/10';
 
   return (
     <span

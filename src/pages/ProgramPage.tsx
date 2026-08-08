@@ -4,20 +4,19 @@ import {
   faCar,
   faChartLine,
   faEye,
-  faHardHat,
   faPuzzlePiece,
-  faRoad,
   faStethoscope,
   faWheelchair,
 } from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeatureCard from '../components/FeatureCard';
 import PlaceholderImage from '../components/PlaceholderImage';
 import SectionTitle from '../components/SectionTitle';
+import type { KeyFeature } from '../data/lots';
 import { projectData } from '../data/lots';
 
-/** Icônes associées aux atouts clés (ordre aligné sur keyFeatures) */
-const featureIcons = [
+const featureIconByIndex: IconDefinition[] = [
   faEye,
   faCar,
   faWheelchair,
@@ -26,11 +25,49 @@ const featureIcons = [
   faBuilding,
 ];
 
+function IllustratedFeature({
+  feature,
+  icon,
+}: {
+  feature: KeyFeature & { image: string; description: string };
+  icon: IconDefinition;
+}) {
+  return (
+    <article>
+      <PlaceholderImage
+        src={feature.image}
+        alt={feature.title}
+        aspectRatio="4/3"
+      />
+      <div className="mt-6 flex items-start gap-4">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-brand/10 text-emerald-brand">
+          <FontAwesomeIcon icon={icon} className="text-xl" />
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-navy">{feature.title}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            {feature.description}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 /**
  * Page Programme — Présentation détaillée du bâtiment et calendrier.
  */
 function ProgramPage() {
-  const { projectInfo, projectImages } = projectData;
+  const { projectInfo } = projectData;
+
+  const illustratedFeatures = projectInfo.keyFeatures.flatMap((feature, index) =>
+    feature.image && feature.description
+      ? [{ feature: feature as KeyFeature & { image: string; description: string }, index }]
+      : [],
+  );
+  const textFeatures = projectInfo.keyFeatures.flatMap((feature, index) =>
+    !feature.image ? [{ feature, index }] : [],
+  );
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
@@ -58,69 +95,41 @@ function ProgramPage() {
         </div>
       </div>
 
-      {/* Atouts clés */}
-      <section className="mb-20">
-        <SectionTitle
-          title="Les atouts du programme"
-          subtitle="Un emplacement premium et des locaux pensés pour les professionnels exigeants."
-          align="center"
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projectInfo.keyFeatures.map((feature, index) => (
-            <FeatureCard
-              key={feature}
-              icon={featureIcons[index % featureIcons.length]}
-              title={feature.split('(')[0].trim()}
-              description={feature}
-            />
-          ))}
-        </div>
-      </section>
+      {/* Atouts illustrés (keyFeatures avec image) */}
+      {illustratedFeatures.length > 0 && (
+        <section className="mb-20">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {illustratedFeatures.map(({ feature, index }) => (
+              <IllustratedFeature
+                key={feature.title}
+                feature={feature}
+                icon={featureIconByIndex[index]}
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* Sections illustrées */}
-      <div className="grid gap-12 lg:grid-cols-2">
-        <div>
-          <PlaceholderImage
-            src={projectImages.programme.facade}
-            alt="Façade du bâtiment avec visibilité sur la RD 554"
-            aspectRatio="4/3"
+      {/* Atouts clés (keyFeatures sans image) */}
+      {textFeatures.length > 0 && (
+        <section className="mb-20">
+          <SectionTitle
+            title="Les atouts du programme"
+            subtitle="Un emplacement premium et des locaux pensés pour les professionnels exigeants."
+            align="center"
           />
-          <FeatureCard
-            icon={faRoad}
-            title="Visibilité maximale RD 554"
-            description="Emplacement stratégique sur l'axe Néoules / Méounes / La Roquebrussanne. Forte visibilité pour votre enseigne et votre activité."
-          />
-        </div>
-
-        <div>
-          <PlaceholderImage
-            src={projectImages.programme.parking}
-            alt="Parking privatif dédié aux occupants du bâtiment"
-            aspectRatio="4/3"
-          />
-          <FeatureCard
-            icon={faBuilding}
-            title="Grand parking privatif"
-            description="Parking dédié aux résidents et à leurs clients. Un atout essentiel pour les cabinets médicaux et les bureaux recevant du public."
-          />
-        </div>
-
-        <div>
-          <FeatureCard
-            icon={faWheelchair}
-            title="Accessibilité PMR intégrale"
-            description="Accès PMR en RDC et R+1 via ascenseur. Conformité aux normes pour accueillir tous vos patients et clients."
-          />
-        </div>
-
-        <div>
-          <FeatureCard
-            icon={faHardHat}
-            title="Brut de béton, fluides en attente"
-            description={projectInfo.deliveryCondition}
-          />
-        </div>
-      </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {textFeatures.map(({ feature, index }) => (
+              <FeatureCard
+                key={feature.title}
+                icon={featureIconByIndex[index]}
+                title={feature.title}
+                description={feature.description ?? ''}
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Activités cibles */}
       <section className="mt-20">
@@ -159,8 +168,8 @@ function ProgramPage() {
               </span>
             </p>
             <p className="mt-2 text-sm text-slate-400">
-              Locaux livrés bruts de béton avec fluides en attente — liberté
-              totale pour concevoir votre aménagement sur mesure.
+              {projectInfo.deliveryCondition} — liberté totale pour concevoir
+              votre aménagement sur mesure.
             </p>
           </div>
         </div>

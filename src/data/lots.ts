@@ -3,6 +3,13 @@
  * Toutes les pages et composants lisent exclusivement projectData.
  */
 
+/** Atout commercial du programme */
+export interface KeyFeature {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
 /** Informations générales du programme immobilier */
 export interface ProjectInfo {
   name: string;
@@ -13,18 +20,13 @@ export interface ProjectInfo {
   deliveryDate: string;
   deliveryCondition: string;
   totalLotsCount: number;
-  keyFeatures: string[];
+  keyFeatures: KeyFeature[];
   targetActivities: string[];
 }
 
 /** Chemins des visuels de présentation (remplaçables dans public/images/) */
 export interface ProjectImages {
   hero: string;
-  programme: {
-    facade: string;
-    parking: string;
-    pmr: string;
-  };
 }
 
 /** Valeurs par défaut et texte légal du simulateur d'acquisition */
@@ -74,12 +76,38 @@ export const projectData: ProjectData = {
       'Locaux livrés bruts de béton, fluides en attente (Aménagement libre)',
     totalLotsCount: 20,
     keyFeatures: [
-      "Forte visibilité sur l'axe très passant RD 554",
-      'Grand parking privatif dédié aux résidents et clients',
-      'Accessibilité PMR intégrale (RDC & R+1 via ascenseur)',
-      'une vingtaine de lots modulables et combinables de 40 m² à 80 m²+',
-      'Constitution de patrimoine via SCI (récupération de TVA)',
-      'Liberté totale d\'aménagement intérieur',
+      {
+        title: 'Visibilité maximale RD 554',
+        description:
+          "Emplacement stratégique sur l'axe Néoules / Méounes / La Roquebrussanne. Votre enseigne bénéficie d'une exposition directe sur l'une des routes les plus empruntées du Var, pour une visibilité commerciale incomparable.",
+        image: '/images/programme-facade.jpg',
+      },
+      {
+        title: 'Grand parking privatif',
+        description:
+          'Un parking généreux, réservé aux occupants du bâtiment et à leurs visiteurs. Vos clients et patients accèdent facilement à votre local — un confort indispensable pour les cabinets médicaux et les bureaux recevant du public.',
+        image: '/images/programme-parking.jpg',
+      },
+      {
+        title: 'Accessibilité PMR intégrale',
+        description:
+          'Accès PMR en RDC et R+1 via ascenseur adapté, conforme aux normes en vigueur. Le bâtiment accueille tous vos patients et clients, sans compromis sur le confort ni la conformité.',
+      },
+      {
+        title: 'Lots modulables et combinables',
+        description:
+          'Une vingtaine de lots de 40 à 80 m² et plus, librement assemblables pour créer des plateaux sur mesure. Faites évoluer votre surface au rythme de votre activité, sans contrainte de cloisonnement imposé.',
+      },
+      {
+        title: 'Constitution de patrimoine via SCI',
+        description:
+          "Montez votre acquisition en SCI pour récupérer la TVA sur le bien et les travaux d'aménagement, tout en constituant un capital immobilier. Une alternative concrète aux loyers perdus de la location classique.",
+      },
+      {
+        title: 'Liberté totale d\'aménagement',
+        description:
+          'Locaux livrés bruts de béton avec fluides en attente : vous concevez l\'agencement qui correspond exactement à votre métier, du cabinet médical au plateau open space, sans compromis imposé.',
+      },
     ],
     targetActivities: [
       'Cabinets médicaux & paramédicaux',
@@ -89,11 +117,6 @@ export const projectData: ProjectData = {
   },
   projectImages: {
     hero: '/images/hero-espace-verdi.jpg',
-    programme: {
-      facade: '/images/programme-facade.jpg',
-      parking: '/images/programme-parking.jpg',
-      pmr: '/images/programme-pmr.jpg',
-    },
   },
   simulationDefaults: {
     defaultOfficePriceHT: 149000,

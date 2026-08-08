@@ -31,7 +31,10 @@ function PlaceholderImage({
 
   if (cover) {
     return (
-      <div className={`relative overflow-hidden ${className}`}>
+      <div
+        className={`absolute inset-0 overflow-hidden ${className}`}
+        aria-hidden="true"
+      >
         {!hasError ? (
           <img
             src={src}
