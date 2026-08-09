@@ -9,16 +9,16 @@ import { projectData } from '../data/lots';
  * Page Offres — 3 configurations types + modularité (sans liste exhaustive).
  */
 function OffersPage() {
-  const { projectInfo, configurations } = projectData;
+  const { configurations } = projectData;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <SectionTitle
         title="Nos offres"
-        subtitle="Trois configurations types pour démarrer. Possibilité de cumuler les lots pour agrandir votre surface."
+        subtitle="Deux configurations types. Possibilité de cumuler les lots pour agrandir votre surface."
       />
 
-      {/* Grille des 3 configurations */}
+      {/* Grille des configurations */}
       <div className="grid gap-10 lg:grid-cols-2">
         {configurations.map((config) => (
           <OfferCard key={config.id} configuration={config} />

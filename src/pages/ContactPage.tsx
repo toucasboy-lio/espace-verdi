@@ -21,13 +21,12 @@ const contactHours = [
  */
 function ContactPage() {
   const { projectInfo } = projectData;
-  const phoneHref = `tel:${projectInfo.phone.replace(/\s/g, '')}`;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <SectionTitle
         title="Contactez-nous"
-        subtitle="Une question sur le programme Espace VERDI ? Notre équipe commerciale est à votre disposition."
+        subtitle="Une question sur le programme Espace VERDI ? Notre équipe est à votre disposition."
       />
 
       <div className="grid gap-10 lg:grid-cols-2">
@@ -39,12 +38,18 @@ function ContactPage() {
             </div>
             <div>
               <h3 className="font-semibold text-navy">Téléphone</h3>
-              <a
-                href={phoneHref}
-                className="mt-1 block text-lg text-emerald-brand transition-colors hover:text-emerald-700"
-              >
-                {projectInfo.phone}
-              </a>
+              <ul className="mt-2 space-y-3">
+                {projectInfo.phones.map((phone) => (
+                  <li key={phone}>
+                    <a
+                      href={`tel:${phone.replace(/\s/g, '')}`}
+                      className="text-lg text-emerald-brand transition-colors hover:text-emerald-700"
+                    >
+                      {phone}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
 
@@ -76,19 +81,19 @@ function ContactPage() {
             </div>
           </article>
 
-          <article className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm">
+          {/*<article className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-brand/10 text-emerald-brand">
               <FontAwesomeIcon icon={faClock} className="text-xl" />
             </div>
-            <div>
+             <div>
               <h3 className="font-semibold text-navy">Horaires</h3>
               <ul className="mt-2 space-y-1 text-sm text-slate-600">
                 {contactHours.map((slot) => (
                   <li key={slot}>{slot}</li>
                 ))}
               </ul>
-            </div>
-          </article>
+            </div> 
+          </article>*/}
         </div>
 
         {/* Encart CTA + livraison */}
@@ -121,13 +126,6 @@ function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-slate-200 bg-surface p-6">
-            <p className="text-sm leading-relaxed text-slate-600">
-              Les coordonnées affichées sont provisoires. Remplacez-les dans{' '}
-              <code className="rounded bg-slate-200 px-1 text-xs">src/data/lots.ts</code>{' '}
-              lorsque vos informations définitives seront disponibles.
-            </p>
-          </div>
         </div>
       </div>
     </div>

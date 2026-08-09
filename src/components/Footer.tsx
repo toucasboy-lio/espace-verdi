@@ -16,14 +16,16 @@ function Footer() {
             <h3 className="mb-4 text-lg font-semibold">{projectInfo.name}</h3>
             <address className="not-italic text-sm leading-relaxed text-slate-300">
               <p>{projectInfo.address}</p>
-              <p className="mt-2">
-                <a
-                  href={`tel:${projectInfo.phone.replace(/\s/g, '')}`}
-                  className="transition-colors hover:text-emerald-brand"
-                >
-                  {projectInfo.phone}
-                </a>
-              </p>
+              {projectInfo.phones.map((phone) => (
+                <p key={phone} className="mt-2">
+                  <a
+                    href={`tel:${phone.replace(/\s/g, '')}`}
+                    className="transition-colors hover:text-emerald-brand"
+                  >
+                    {phone}
+                  </a>
+                </p>
+              ))}
               <p>
                 <a
                   href={`mailto:${projectInfo.email}`}

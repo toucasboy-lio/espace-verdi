@@ -10,7 +10,7 @@ const navLinks = [
   { to: '/', label: 'Accueil', end: true },
   { to: '/le-programme', label: 'Le Programme', end: false },
   { to: '/offres', label: 'Offres', end: false },
-  { to: '/simulation', label: 'Simulation', end: false },
+  // { to: '/simulation', label: 'Simulation', end: false },
   { to: '/contact', label: 'Contact', end: false },
 ];
 

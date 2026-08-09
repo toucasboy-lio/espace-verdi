@@ -247,7 +247,7 @@ function SimulationPage() {
             <div className="relative">
               <div className="inline-flex items-center gap-1">
                 <Badge
-                  label={`Notaire ${formatEuro(notaryFees)} (réduit)`}
+                  label={`Frais de Notaire réduits ${formatEuro(notaryFees)}`}
                   variant="emerald"
                 />
                 <button

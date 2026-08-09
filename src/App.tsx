@@ -5,7 +5,7 @@ import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import OffersPage from './pages/OffersPage';
 import ProgramPage from './pages/ProgramPage';
-import SimulationPage from './pages/SimulationPage';
+// import SimulationPage from './pages/SimulationPage';
 
 /**
  * Point d'entrée du routage multipage.
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/le-programme" element={<ProgramPage />} />
           <Route path="/offres" element={<OffersPage />} />
-          <Route path="/simulation" element={<SimulationPage />} />
+          {/* <Route path="/simulation" element={<SimulationPage />} /> */}
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Layout>

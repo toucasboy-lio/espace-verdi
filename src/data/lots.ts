@@ -15,7 +15,7 @@ export interface ProjectInfo {
   name: string;
   address: string;
   locationDetails: string;
-  phone: string;
+  phones: string[];
   email: string;
   deliveryDate: string;
   deliveryCondition: string;
@@ -73,7 +73,7 @@ export const projectData: ProjectData = {
     address: 'Les Croys, RD 554, 83136 Néoules',
     locationDetails:
       "Emplacement stratégique sur l'axe Néoules / Méounes / La Roquebrussanne",
-    phone: '04 XX XX XX XX',
+    phones: ['04 XX XX XX XX', '04 XX XX XX XX'],
     email: 'contact@espace-verdi.fr',
     deliveryDate: '2028',
     deliveryCondition:
@@ -83,39 +83,54 @@ export const projectData: ProjectData = {
       {
         title: 'Visibilité maximale RD 554',
         description:
-          "Emplacement stratégique sur l'axe Néoules / Méounes / La Roquebrussanne. Votre enseigne bénéficie d'une exposition directe sur l'une des routes les plus empruntées du Var, pour une visibilité commerciale incomparable.",
+          "Emplacement stratégique sur un axe très passant entre Néoules, Méounes et La Roquebrussanne. Une exposition idéale pour votre enseigne.",
         image: '/images/programme-facade.jpg',
       },
       {
         title: 'Grand parking privatif',
         description:
-          'Un parking généreux, réservé aux occupants du bâtiment et à leurs visiteurs. Vos clients et patients accèdent facilement à votre local — un confort indispensable pour les cabinets médicaux et les bureaux recevant du public.',
+          'Stationnement facile et gratuit dédié aux occupants, clients et patients. Un atout clé pour l’accueil du public.',
         image: '/images/programme-parking.jpg',
       },
       {
         title: 'Accessibilité PMR intégrale',
         description:
-          'Accès PMR en RDC et R+1 via ascenseur adapté, conforme aux normes en vigueur. Le bâtiment accueille tous vos patients et clients, sans compromis sur le confort ni la conformité.',
-       },
+          'Bâtiment 100 % conforme aux normes PMR en RDC et R+1 avec ascenseur adapté.',
+      },
       {
         title: 'Lots modulables et combinables',
         description:
-          'Une vingtaine de lots de 40 à 80 m² et plus, librement assemblables pour créer des plateaux sur mesure. Faites évoluer votre surface au rythme de votre activité, sans contrainte de cloisonnement imposé.',
+          'Plateaux de 40 à 80 m²+ assemblables sur mesure pour façonner l’espace adapté à votre activité.',
       },
       {
-        title: 'Constitution de patrimoine via SCI',
+        title: 'Constitution de patrimoine',
         description:
-          "Montez votre acquisition en SCI pour récupérer la TVA sur le bien et les travaux d'aménagement, tout en constituant un capital immobilier. Une alternative concrète aux loyers perdus de la location classique.",
+          'Devenez propriétaire de vos locaux professionnels et capitalisez plutôt que de payer des loyers à perte.',
       },
       {
         title: 'Liberté totale d\'aménagement',
         description:
-          'Locaux livrés bruts de béton avec fluides en attente : vous concevez l\'agencement qui correspond exactement à votre métier, du cabinet médical au plateau open space, sans compromis imposé.',
+          'Locaux livrés bruts avec fluides en attente pour un aménagement sur mesure adapté à votre métier.',
       },
       {
         title: 'Frais de notaire réduits',
         description:
-          "Vente en l'état futur d'achèvement (VEFA) sur un immeuble neuf, jamais habité ni utilisé : vous bénéficiez de frais de notaire réduits, environ 2 à 3 % du prix HT (contre 7 à 8 % en immobilier ancien).",
+          'Achat en VEFA neuf : bénéficiez de frais de notaire réduits à environ 2 à 3 % (contre 7 à 8 % dans l’ancien).',
+      },
+      {
+        title: 'Sanitaires communs par étage',
+        description:
+          'Blocs WC communs au RDC et R+1 : économisez de la surface utile au sein de votre lot.',
+      },
+      {
+        title: 'Couloirs larges & zones d\'attente',
+        description:
+          'Espaces de circulation généreux à l’étage, idéaux pour aménager une zone d’attente visiteurs ou patients.',
+      },
+      {
+        title: 'Accès direct extérieur au RDC',
+        description:
+          'Sortie directe vers l’extérieur pour tous les lots du rez-de-chaussée : autonomie renforcée.',
       },
     ],
     targetActivities: [
@@ -151,8 +166,8 @@ export const projectData: ProjectData = {
       startingPriceHT: 99000,
       features: [
         'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
-        "Possibilité d'assembler plusieurs lots contigus",
-        "Fluides en attente pour sanitaires privatifs ou point d'eau",
+        "Format le plus demandé : Forte valeur à la revente et à la location",
+        "Faibles charges de copropriété",
       ],
       floorAvailability: 'Disponible en RDC et R+1',
       image: '/images/config-medium.jpg',
@@ -165,9 +180,9 @@ export const projectData: ProjectData = {
         'Centre de santé, cabinet pluridisciplinaire, siège d\'entreprise',
       startingPriceHT: 179000,
       features: [
-        'Grands volumes aménageables à la carte',
-        "Possibilité d'assembler plusieurs lots contigus",
-        'Emplacement premium dans le bâtiment',
+        'Grands volumes aménageables',
+        'Idéal pour mutualiser les coûts entre plusieurs associés',
+        "Arrivées d'eau et évacuations en attente (idéal lave-mains par cabinet)"
       ],
       floorAvailability: 'Disponible en RDC et R+1',
       image: '/images/config-large.jpg',

@@ -1,11 +1,16 @@
 import {
+  faBriefcase,
   faBuilding,
   faCalendarCheck,
   faCar,
   faChartLine,
+  faDoorOpen,
   faEye,
   faFileSignature,
+  faPeopleGroup,
   faPuzzlePiece,
+  faRestroom,
+  faScaleBalanced,
   faStethoscope,
   faWheelchair,
 } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +22,12 @@ import SectionTitle from '../components/SectionTitle';
 import type { KeyFeature } from '../data/lots';
 import { projectData } from '../data/lots';
 
+const activityIconByLabel: Record<string, IconDefinition> = {
+  'Cabinets médicaux & paramédicaux': faStethoscope,
+  'Professions libérales (Avocats, Experts-comptables...)': faScaleBalanced,
+  "Bureaux d'entreprises & services": faBriefcase,
+};
+
 const featureIconByIndex: IconDefinition[] = [
   faEye,
   faCar,
@@ -25,6 +36,9 @@ const featureIconByIndex: IconDefinition[] = [
   faChartLine,
   faBuilding,
   faFileSignature,
+  faRestroom,
+  faPeopleGroup,
+  faDoorOpen,
 ];
 
 function IllustratedFeature({
@@ -89,7 +103,7 @@ function ProgramPage() {
             <p className="mt-2 leading-relaxed text-slate-600">
               Espace VERDI propose {projectInfo.totalLotsCount} lots de bureaux,
               cabinets médicaux et professions libérales, répartis en RDC et R+1.
-              Les surfaces vont de 30 m² à 80 m² et plus, avec possibilité de
+              Les surfaces vont de 40 m² à 80 m² et plus, avec possibilité de
               combiner plusieurs lots contigus pour créer des plateaux sur mesure.
             </p>
             <p className="mt-3 text-sm text-slate-500">{projectInfo.address}</p>
@@ -146,7 +160,7 @@ function ProgramPage() {
               className="flex items-center gap-4 rounded-xl bg-white p-6 shadow-sm"
             >
               <FontAwesomeIcon
-                icon={faStethoscope}
+                icon={activityIconByLabel[activity] ?? faBuilding}
                 className="text-2xl text-emerald-brand"
               />
               <p className="font-medium text-navy">{activity}</p>
