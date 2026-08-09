@@ -1,5 +1,4 @@
 import {
-  faClock,
   faDownload,
   faEnvelope,
   faLocationDot,
@@ -9,12 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CTAButton from '../components/CTAButton';
 import SectionTitle from '../components/SectionTitle';
 import { projectData } from '../data/lots';
-
-/** Horaires de contact placeholder — à personnaliser */
-const contactHours = [
-  'Lundi – Vendredi : 9h00 – 12h30 / 14h00 – 18h00',
-  'Samedi : sur rendez-vous',
-];
 
 /**
  * Page Contact — Coordonnées et prise de contact.
