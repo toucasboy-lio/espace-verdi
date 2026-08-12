@@ -43,7 +43,7 @@ function OffersPage() {
               équipe médicale ou un centre paramédical complet.
             </p>
             <p className="mt-4 leading-relaxed text-slate-600">
-              Surfaces cumulables de 30 m² à 80 m² et plus, en RDC ou R+1.
+              Surfaces cumulables de 40 m² à 80 m² et plus, en RDC ou R+1.
               Chaque configuration est pensée pour s&apos;adapter à l&apos;évolution
               de votre activité professionnelle.
             </p>
@@ -60,7 +60,7 @@ function OffersPage() {
           Téléchargez le dossier commercial complet du programme.
         </p>
         <div className="mt-6">
-          <CTAButton href="/dossier-espace-verdi.pdf" download variant="emerald">
+          <CTAButton href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`} download variant="emerald">
             <FontAwesomeIcon icon={faDownload} className="mr-2" />
             Télécharger le dossier commercial
           </CTAButton>

@@ -52,7 +52,7 @@ function Navbar() {
 
         <div className="hidden lg:block">
           <CTAButton
-            href="/dossier-espace-verdi.pdf"
+            href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`}
             download
             variant="emerald"
           >
@@ -90,7 +90,7 @@ function Navbar() {
             ))}
             <li className="pt-2">
               <CTAButton
-                href="/dossier-espace-verdi.pdf"
+                href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`}
                 download
                 variant="emerald"
                 className="w-full"

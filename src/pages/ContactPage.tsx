@@ -112,7 +112,7 @@ function ContactPage() {
               Plans, surfaces, conditions de vente et argumentaire fiscal SCI.
             </p>
             <div className="mt-6">
-              <CTAButton href="/dossier-espace-verdi.pdf" download variant="emerald">
+              <CTAButton href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`} download variant="emerald">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
                 Télécharger le dossier
               </CTAButton>

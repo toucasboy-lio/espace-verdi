@@ -84,13 +84,13 @@ export const projectData: ProjectData = {
         title: 'Visibilité maximale RD 554',
         description:
           "Emplacement stratégique sur un axe très passant entre Néoules, Méounes et La Roquebrussanne. Une exposition idéale pour votre enseigne.",
-        image: '/images/programme-facade.jpg',
+        image: `${import.meta.env.BASE_URL}images/programme-facade.jpg`,
       },
       {
         title: 'Grand parking privatif',
         description:
           'Stationnement facile et gratuit dédié aux occupants, clients et patients. Un atout clé pour l’accueil du public.',
-        image: '/images/programme-parking.jpg',
+        image: `${import.meta.env.BASE_URL}images/programme-parking.jpg`,
       },
       {
         title: 'Accessibilité PMR intégrale',
@@ -140,7 +140,7 @@ export const projectData: ProjectData = {
     ],
   },
   projectImages: {
-    hero: '/images/hero-espace-verdi.jpg',
+    hero: `${import.meta.env.BASE_URL}images/hero-espace-verdi.jpg`,
   },
   simulationDefaults: {
     defaultOfficePriceHT: 149000,
@@ -170,7 +170,7 @@ export const projectData: ProjectData = {
         "Faibles charges de copropriété",
       ],
       floorAvailability: 'Disponible en RDC et R+1',
-      image: '/images/config-medium.jpg',
+      image: `${import.meta.env.BASE_URL}images/config-medium.jpg`,
     },
     {
       id: 'config-large',
@@ -185,7 +185,7 @@ export const projectData: ProjectData = {
         "Arrivées d'eau et évacuations en attente (idéal lave-mains par cabinet)"
       ],
       floorAvailability: 'Disponible en RDC et R+1',
-      image: '/images/config-large.jpg',
+      image: `${import.meta.env.BASE_URL}images/config-large.jpg`,
     },
   ],
 };
