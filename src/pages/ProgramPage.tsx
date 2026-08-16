@@ -20,7 +20,7 @@ import FeatureCard from '../components/FeatureCard';
 import PlaceholderImage from '../components/PlaceholderImage';
 import SectionTitle from '../components/SectionTitle';
 import type { KeyFeature } from '../data/lots';
-import { projectData } from '../data/lots';
+import { formatSurfaceRangeLabel, projectData } from '../data/lots';
 
 const activityIconByLabel: Record<string, IconDefinition> = {
   'Cabinets médicaux & paramédicaux': faStethoscope,
@@ -101,9 +101,9 @@ function ProgramPage() {
           <div>
             <h3 className="text-xl font-bold text-navy">Un bâtiment tertiaire neuf</h3>
             <p className="mt-2 leading-relaxed text-slate-600">
-              Espace VERDI propose {projectInfo.totalLotsCount} lots de bureaux,
+              Espace VERDI propose une vingtaine de lots de bureaux,
               cabinets médicaux et professions libérales, répartis en RDC et R+1.
-              Les surfaces vont de 40 m² à 80 m² et plus, avec possibilité de
+              Les surfaces vont {formatSurfaceRangeLabel()}, avec possibilité de
               combiner plusieurs lots contigus pour créer des plateaux sur mesure.
             </p>
             <p className="mt-3 text-sm text-slate-500">{projectInfo.address}</p>

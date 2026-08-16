@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { formatMinSurfaceLabel } from '../data/lots';
 
 const SITE_URL = 'https://espace-verdi.fr';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/hero-espace-verdi.jpg`;
@@ -26,13 +27,13 @@ const pages: Record<string, PageMetaConfig> = {
   '/offres': {
     title: 'Nos offres — Espace VERDI Néoules',
     description:
-      'Lots tertiaires modulables dès 40 m² à Néoules : bureaux, cabinets médicaux et professions libérales. Configurations cumulables selon vos besoins.',
+      `Lots tertiaires modulables ${formatMinSurfaceLabel()} à Néoules : bureaux, cabinets médicaux et professions libérales. Configurations cumulables selon vos besoins.`,
     path: '/offres',
   },
   '/contact': {
     title: 'Contact — Espace VERDI Néoules',
     description:
-      'Contactez Espace VERDI pour votre projet tertiaire à Néoules. Téléchargez le dossier commercial ou prenez rendez-vous avec notre équipe.',
+      'Contactez Espace VERDI pour votre projet tertiaire à Néoules. Téléphone, email et prise de rendez-vous avec notre équipe.',
     path: '/contact',
   },
 };

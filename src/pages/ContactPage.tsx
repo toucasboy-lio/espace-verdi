@@ -1,11 +1,9 @@
 import {
-  faDownload,
   faEnvelope,
   faLocationDot,
   faPhone,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CTAButton from '../components/CTAButton';
 import SectionTitle from '../components/SectionTitle';
 import { projectData } from '../data/lots';
 
@@ -103,22 +101,6 @@ function ContactPage() {
               {projectInfo.deliveryCondition}
             </p>
           </div>
-
-          <div className="rounded-xl bg-white p-8 text-center shadow-sm">
-            <h3 className="text-lg font-semibold text-navy">
-              Dossier commercial complet
-            </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Plans, surfaces, conditions de vente et argumentaire fiscal SCI.
-            </p>
-            <div className="mt-6">
-              <CTAButton href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`} download variant="emerald">
-                <FontAwesomeIcon icon={faDownload} className="mr-2" />
-                Télécharger le dossier
-              </CTAButton>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>

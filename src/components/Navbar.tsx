@@ -1,9 +1,8 @@
-import { faBars, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { projectData } from '../data/lots';
-import CTAButton from './CTAButton';
 
 /** Liens de navigation principaux */
 const navLinks = [
@@ -50,17 +49,6 @@ function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <CTAButton
-            href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`}
-            download
-            variant="emerald"
-          >
-            <FontAwesomeIcon icon={faDownload} className="mr-2" />
-            Dossier Commercial
-          </CTAButton>
-        </div>
-
         {/* Bouton menu mobile */}
         <button
           type="button"
@@ -88,17 +76,6 @@ function Navbar() {
                 </NavLink>
               </li>
             ))}
-            <li className="pt-2">
-              <CTAButton
-                href={`${import.meta.env.BASE_URL}dossier-espace-verdi.pdf`}
-                download
-                variant="emerald"
-                className="w-full"
-              >
-                <FontAwesomeIcon icon={faDownload} className="mr-2" />
-                Dossier Commercial
-              </CTAButton>
-            </li>
           </ul>
         </nav>
       )}

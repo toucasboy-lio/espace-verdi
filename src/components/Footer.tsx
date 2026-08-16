@@ -75,7 +75,7 @@ function Footer() {
 
         <div className="mt-10 border-t border-slate-700 pt-6 text-center text-xs text-slate-400">
           © {currentYear} {projectInfo.name}. Tous droits réservés. Programme
-          immobilier tertiaire — {projectInfo.totalLotsCount} lots modulables.
+          immobilier tertiaire — une vingtaine de lots modulables.
         </div>
       </div>
     </footer>

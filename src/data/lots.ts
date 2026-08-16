@@ -19,7 +19,8 @@ export interface ProjectInfo {
   email: string;
   deliveryDate: string;
   deliveryCondition: string;
-  totalLotsCount: number;
+  minSurfaceM2: number;
+  maxSurfaceM2: number;
   keyFeatures: KeyFeature[];
   targetActivities: string[];
 }
@@ -66,6 +67,9 @@ export interface ProjectData {
   configurations: Configuration[];
 }
 
+const MIN_SURFACE_M2 = 20;
+const MAX_SURFACE_M2 = 80;
+
 /** Données commerciales et techniques du programme Espace VERDI */
 export const projectData: ProjectData = {
   projectInfo: {
@@ -78,7 +82,8 @@ export const projectData: ProjectData = {
     deliveryDate: '2028',
     deliveryCondition:
       'Locaux livrés bruts de béton, fluides en attente (Aménagement libre)',
-    totalLotsCount: 20,
+    minSurfaceM2: MIN_SURFACE_M2,
+    maxSurfaceM2: MAX_SURFACE_M2,
     keyFeatures: [
       {
         title: 'Visibilité maximale RD 554',
@@ -87,7 +92,7 @@ export const projectData: ProjectData = {
         image: `${import.meta.env.BASE_URL}images/programme-facade.jpg`,
       },
       {
-        title: 'Grand parking privatif',
+        title: 'Grand parking privatif (50 places)',
         description:
           'Stationnement facile et gratuit dédié aux occupants, clients et patients. Un atout clé pour l’accueil du public.',
         image: `${import.meta.env.BASE_URL}images/programme-parking.jpg`,
@@ -100,7 +105,7 @@ export const projectData: ProjectData = {
       {
         title: 'Lots modulables et combinables',
         description:
-          'Plateaux de 40 à 80 m²+ assemblables sur mesure pour façonner l’espace adapté à votre activité.',
+          `Plateaux de ${MIN_SURFACE_M2} à ${MAX_SURFACE_M2} m²+ assemblables sur mesure pour façonner l’espace adapté à votre activité.`,
       },
       {
         title: 'Constitution de patrimoine',
@@ -207,6 +212,17 @@ export const projectData: ProjectData = {
 /** Retrouve une configuration par son identifiant */
 export function getConfigurationById(id: string): Configuration | undefined {
   return projectData.configurations.find((config) => config.id === id);
+}
+
+/** Libellé marketing « dès X m² » */
+export function formatMinSurfaceLabel(): string {
+  return `dès ${projectData.projectInfo.minSurfaceM2} m²`;
+}
+
+/** Libellé marketing « de X m² à Y m² et plus » */
+export function formatSurfaceRangeLabel(): string {
+  const { minSurfaceM2, maxSurfaceM2 } = projectData.projectInfo;
+  return `de ${minSurfaceM2} m² à ${maxSurfaceM2} m² et plus`;
 }
 
 /** Formate un montant en euros (locale fr-FR) */

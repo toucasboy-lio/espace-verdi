@@ -3,7 +3,7 @@ import CTAButton from '../components/CTAButton';
 import HeroRibbon from '../components/HeroRibbon';
 import PlaceholderImage from '../components/PlaceholderImage';
 import PromoterPriceStamp from '../components/PromoterPriceStamp';
-import { projectData } from '../data/lots';
+import { formatMinSurfaceLabel, projectData } from '../data/lots';
 
 const heroBadges = [
   'Grand parking clients & collaborateurs dédié',
@@ -64,7 +64,7 @@ function HomePage() {
             Des espaces adaptés à vos besoins
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            Des lots modulables dès 40&nbsp;m², cumulables
+            Des lots modulables {formatMinSurfaceLabel()}, cumulables
             selon vos besoins, pour votre activité
             en Provence Verte — bureaux, cabinets médicaux ou professions libérales.
           </p>
