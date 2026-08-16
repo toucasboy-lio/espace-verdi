@@ -1,5 +1,6 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import PageMeta from './components/PageMeta';
 import ScrollToTop from './components/ScrollToTop';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
@@ -13,7 +14,8 @@ import ProgramPage from './pages/ProgramPage';
  */
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
+      <PageMeta />
       <ScrollToTop />
       <Layout>
         <Routes>
@@ -24,7 +26,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Layout>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
