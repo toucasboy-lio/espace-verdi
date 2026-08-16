@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 /** Configuration Vite — React + Tailwind CSS v4 */
 export default defineConfig({
-  // Requis pour GitHub Pages (repo project): assets sous /espace-verdi/
-  base: '/espace-verdi/',
+  // Domaine personnalisé espace-verdi.fr servi à la racine
+  base: '/',
   plugins: [react(), tailwindcss()],
 });

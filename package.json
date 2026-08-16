@@ -2,7 +2,7 @@
   "name": "espace-verdi",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://toucasboy-lio.github.io/espace-verdi",
+  "homepage": "https://espace-verdi.fr",
   "type": "module",
   "scripts": {
     "dev": "vite",

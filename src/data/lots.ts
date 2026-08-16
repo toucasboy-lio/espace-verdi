@@ -158,12 +158,26 @@ export const projectData: ProjectData = {
   },
   configurations: [
     {
+      id: 'config-solo',
+      title: 'Module Cabinet / Bureau Solo',
+      surfaceRange: '20 m² à 25 m²',
+      idealFor: 'Praticien individuel, indépendant, consultation',
+      startingPriceHT: 89000,
+      features: [
+        "Faible coût d'acquisition",
+        'Espace à optimisation maximale',
+        'Accès PMR direct',
+      ],
+      floorAvailability: 'Disponible en RDC et R+1',
+      image: `${import.meta.env.BASE_URL}images/config-solo.jpg`,
+    },
+    {
       id: 'config-medium',
       title: 'Plateau Cabinet & Équipe',
       surfaceRange: '40 m² à 60 m²',
       idealFor:
         'Cabinet regroupant 2 à 4 professionnels, étude, agence, équipe médicale',
-      startingPriceHT: 99000,
+      startingPriceHT: 129000,
       features: [
         'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
         "Format le plus demandé : Forte valeur à la revente et à la location",

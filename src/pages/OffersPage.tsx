@@ -15,11 +15,11 @@ function OffersPage() {
     <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <SectionTitle
         title="Nos offres"
-        subtitle="Deux configurations types. Possibilité de cumuler les lots pour agrandir votre surface."
+        subtitle="Trois configurations types. Possibilité de cumuler les lots pour agrandir votre surface."
       />
 
       {/* Grille des configurations */}
-      <div className="grid gap-10 lg:grid-cols-2">
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {configurations.map((config) => (
           <OfferCard key={config.id} configuration={config} />
         ))}
