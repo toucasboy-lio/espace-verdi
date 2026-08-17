@@ -77,7 +77,7 @@ export const projectData: ProjectData = {
     address: 'Les Croys, RD 554, 83136 Néoules',
     locationDetails:
       "Emplacement stratégique sur l'axe Néoules / Méounes / La Roquebrussanne",
-    phones: ['04 XX XX XX XX', '04 XX XX XX XX'],
+    phones: ['06 35 27 08 46', '06 21 87 58 68'],
     email: 'contact@espace-verdi.fr',
     deliveryDate: '2028',
     deliveryCondition:
@@ -133,7 +133,7 @@ export const projectData: ProjectData = {
           'Blocs WC communs au RDC et R+1 : économisez de la surface utile au sein de votre lot.',
       },
       {
-        title: 'Couloirs larges & zones d\'attente',
+        title: 'Couloirs larges à l\'étage (zone d\'attente)',
         description:
           'Espaces de circulation généreux à l’étage, idéaux pour aménager une zone d’attente visiteurs ou patients.',
       },
@@ -187,7 +187,7 @@ export const projectData: ProjectData = {
       surfaceRange: '40 m² à 60 m²',
       idealFor:
         'Cabinet regroupant 2 à 4 professionnels, étude, agence, équipe médicale',
-      startingPriceHT: 129000,
+      startingPriceHT: 149000,
       features: [
         'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
         "Format le plus demandé : Forte valeur à la revente et à la location",
@@ -202,7 +202,7 @@ export const projectData: ProjectData = {
       surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
       idealFor:
         'Centre de santé, cabinet pluridisciplinaire, siège d\'entreprise',
-      startingPriceHT: 179000,
+      startingPriceHT: 199000,
       features: [
         'Grands volumes aménageables',
         'Idéal pour mutualiser les coûts entre plusieurs associés',
