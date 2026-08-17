@@ -20,7 +20,7 @@ function FeatureCard({ icon, title, description }: FeatureCardProps) {
         <FontAwesomeIcon icon={icon} className="text-xl" />
       </div>
       <h3 className="mb-2 text-lg font-semibold text-navy">{title}</h3>
-      <p className="text-sm leading-relaxed text-slate-600">{description}</p>
+      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-600">{description}</p>
     </article>
   );
 }

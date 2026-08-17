@@ -10,6 +10,7 @@ import {
   faPeopleGroup,
   faPuzzlePiece,
   faRestroom,
+  faRoute,
   faScaleBalanced,
   faStethoscope,
   faWheelchair,
@@ -31,6 +32,7 @@ const activityIconByLabel: Record<string, IconDefinition> = {
 const featureIconByIndex: IconDefinition[] = [
   faEye,
   faCar,
+  faRoute,
   faWheelchair,
   faPuzzlePiece,
   faChartLine,
@@ -61,7 +63,7 @@ function IllustratedFeature({
         </div>
         <div>
           <h3 className="text-lg font-semibold text-navy">{feature.title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-600">
             {feature.description}
           </p>
         </div>

@@ -89,13 +89,18 @@ export const projectData: ProjectData = {
         title: 'Visibilité maximale RD 554',
         description:
           "Emplacement stratégique sur un axe très passant entre Néoules, Méounes et La Roquebrussanne. Une exposition idéale pour votre enseigne.",
-        image: `${import.meta.env.BASE_URL}images/programme-facade.jpg`,
+        image: `${import.meta.env.BASE_URL}images/programme-position.jpg`,
       },
       {
         title: 'Grand parking privatif (50 places)',
         description:
           'Stationnement facile et gratuit dédié aux occupants, clients et patients. Un atout clé pour l’accueil du public.',
         image: `${import.meta.env.BASE_URL}images/programme-parking.jpg`,
+      },
+      {
+        title: 'Accès rapide aux bassins d\'emplois et de population',
+        description:
+          'ZA Fray Redon (Rocbaron): 8 minutes\nBrignoles: 20 minutes\nZI Toulon-Est La Farlede: 25 minutes\nToulon: 30 minutes',
       },
       {
         title: 'Accessibilité PMR intégrale',
