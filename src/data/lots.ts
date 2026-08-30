@@ -47,7 +47,7 @@ export interface SimulationDefaults {
   tvaNotice: string;
 }
 
-/** Une des 3 configurations types commercialisées */
+/** Offre commerciale (configuration type) */
 export interface Configuration {
   id: string;
   title: string;
@@ -55,8 +55,15 @@ export interface Configuration {
   idealFor: string;
   startingPriceHT: number;
   features: string[];
-  floorAvailability: string;
   image: string;
+}
+
+/** Catégorie d'offres par étage / activité */
+export interface OfferCategory {
+  id: string;
+  title: string;
+  subtitle?: string;
+  offers: Configuration[];
 }
 
 /** Structure complète des données du projet */
@@ -64,7 +71,7 @@ export interface ProjectData {
   projectInfo: ProjectInfo;
   projectImages: ProjectImages;
   simulationDefaults: SimulationDefaults;
-  configurations: Configuration[];
+  offerCategories: OfferCategory[];
 }
 
 const MIN_SURFACE_M2 = 20;
@@ -166,57 +173,100 @@ export const projectData: ProjectData = {
     tvaNotice:
       "Inclus : Récupération de la TVA (20 %) sur l'acquisition et les travaux d'aménagement via le montage SCI.",
   },
-  configurations: [
+  offerCategories: [
     {
-      id: 'config-solo',
-      title: 'Module Cabinet / Bureau Solo',
-      surfaceRange: '20 m² à 25 m²',
-      idealFor: 'Praticien individuel, indépendant, consultation',
-      startingPriceHT: 89000,
-      features: [
-        "Faible coût d'acquisition",
-        'Espace à optimisation maximale',
-        'Accès PMR direct',
+      id: 'bureaux-rdc',
+      title: 'Bureaux au RDC',
+      subtitle:
+        'Plateaux au rez-de-chaussée avec accès direct extérieur et visibilité sur la RD 554',
+      offers: [
+        {
+          id: 'bureaux-rdc-medium',
+          title: 'Plateau Bureau & Équipe',
+          surfaceRange: '40 m² à 60 m²',
+          idealFor:
+            'Cabinet de conseil, agence immobilière ou d\'assurance, expert-comptable, avocat, cabinet d\'architecture, agence de communication, bureau d\'études — équipe de 2 à 4 collaborateurs',
+          startingPriceHT: 149000,
+          features: [
+            'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
+            'Accès direct extérieur et visibilité enseigne',
+            'Faibles charges de copropriété',
+          ],
+          image: `${import.meta.env.BASE_URL}images/config-medium.jpg`,
+        },
+        {
+          id: 'bureaux-rdc-large',
+          title: 'Grand Plateau / Siège',
+          surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
+          idealFor:
+            'Siège social, centre d\'affaires ou espace coworking, cabinet pluridisciplinaire (conseil, RH, juridique, ingénierie), plateforme de services administratifs ou téléservices',
+          startingPriceHT: 199000,
+          features: [
+            'Grands volumes aménageables',
+            'Idéal pour mutualiser les coûts entre plusieurs associés ou activités',
+            'Accès PMR direct depuis le parking',
+          ],
+          image: `${import.meta.env.BASE_URL}images/config-large.jpg`,
+        },
       ],
-      floorAvailability: 'Disponible en RDC et R+1',
-      image: `${import.meta.env.BASE_URL}images/config-solo.jpg`,
     },
     {
-      id: 'config-medium',
-      title: 'Plateau Cabinet & Équipe',
-      surfaceRange: '40 m² à 60 m²',
-      idealFor:
-        'Cabinet regroupant 2 à 4 professionnels, étude, agence, équipe médicale',
-      startingPriceHT: 149000,
-      features: [
-        'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
-        "Format le plus demandé : Forte valeur à la revente et à la location",
-        "Faibles charges de copropriété",
+      id: 'sante-etage',
+      title: 'Espace Santé / Bien-être au 1er étage',
+      subtitle:
+        'Pôle santé au R+1 avec couloirs larges pour zone d\'attente et accessibilité PMR.',
+      offers: [
+        {
+          id: 'sante-solo',
+          title: 'Cabinet Praticien',
+          surfaceRange: '20 m² à 25 m²',
+          idealFor:
+            'Praticien individuel : médecin, psychologue, orthophoniste, infirmier, diététicien, ostéopathe, sage-femme, ou spécialiste du bien-être (sophrologue, naturopathe, hypnothérapeute)',
+          startingPriceHT: 89000,
+          features: [
+            "Faible coût d'acquisition",
+            'Espace à optimisation maximale',
+            'Accès PMR par ascenseur',
+          ],
+          image: `${import.meta.env.BASE_URL}images/sante-solo.jpg`,
+        },
+        {
+          id: 'sante-medium',
+          title: 'Cabinet Premium',
+          surfaceRange: '40 m² à 60 m²',
+          idealFor:
+            'Médecins, dentistes ou spécialistes souhaitant plus d\'espace pour leur équipe (assistant, plusieurs salles de soin)',
+          startingPriceHT: 149000,
+          features: [
+            'Aménagement flexible',
+            'Couloirs larges pour zone d\'attente patients',
+            'Format le plus demandé : Forte valeur à la revente et à la location',
+          ],
+          image: `${import.meta.env.BASE_URL}images/sante-medium.jpg`,
+        },
+        {
+          id: 'sante-large',
+          title: 'Grand Espace / Centre Paramédical',
+          surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
+          idealFor:
+            'Cabinet de kinésithérapie, centre de santé pluridisciplinaire ou pôle bien-être regroupant plusieurs praticiens',
+          startingPriceHT: 199000,
+          features: [
+            'Grands volumes aménageables : idéal pour salle d\'exercice et plateau technique',
+            'Idéal pour mutualiser les coûts entre plusieurs associés ou activités',
+          ],
+          image: `${import.meta.env.BASE_URL}images/sante-large.jpg`,
+        },
       ],
-      floorAvailability: 'Disponible en RDC et R+1',
-      image: `${import.meta.env.BASE_URL}images/config-medium.jpg`,
-    },
-    {
-      id: 'config-large',
-      title: 'Grand Espace / Centre Paramédical',
-      surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
-      idealFor:
-        'Centre de santé, cabinet pluridisciplinaire, siège d\'entreprise',
-      startingPriceHT: 199000,
-      features: [
-        'Grands volumes aménageables',
-        'Idéal pour mutualiser les coûts entre plusieurs associés',
-        "Arrivées d'eau et évacuations en attente (idéal lave-mains par cabinet)"
-      ],
-      floorAvailability: 'Disponible en RDC et R+1',
-      image: `${import.meta.env.BASE_URL}images/config-large.jpg`,
     },
   ],
 };
 
-/** Retrouve une configuration par son identifiant */
+/** Retrouve une offre par son identifiant */
 export function getConfigurationById(id: string): Configuration | undefined {
-  return projectData.configurations.find((config) => config.id === id);
+  return projectData.offerCategories
+    .flatMap((category) => category.offers)
+    .find((offer) => offer.id === id);
 }
 
 /** Libellé marketing « dès X m² » */

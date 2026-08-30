@@ -49,9 +49,6 @@ function OfferCard({ configuration, compact = false }: OfferCardProps) {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-xs text-slate-500">
-              {configuration.floorAvailability}
-            </p>
           </>
         )}
 

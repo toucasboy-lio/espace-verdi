@@ -27,7 +27,7 @@ const pages: Record<string, PageMetaConfig> = {
   '/offres': {
     title: 'Nos offres — Espace VERDI Néoules',
     description:
-      `Lots tertiaires modulables ${formatMinSurfaceLabel()} à Néoules : bureaux, cabinets médicaux et professions libérales. Configurations cumulables selon vos besoins.`,
+      `Lots tertiaires modulables ${formatMinSurfaceLabel()} à Néoules : bureaux au RDC et pôle santé au 1er étage. Surfaces cumulables selon vos besoins.`,
     path: '/offres',
   },
   '/contact': {
