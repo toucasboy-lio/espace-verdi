@@ -181,26 +181,38 @@ export const projectData: ProjectData = {
         'Plateaux au rez-de-chaussée avec accès direct extérieur et visibilité sur la RD 554',
       offers: [
         {
+          id: 'bureaux-rdc-small',
+          title: 'Bureau Solo ou Duo',
+          surfaceRange: '30 m²',
+          idealFor: 'Courtier, architecte, agence immobilière ou d\'assurance',
+          startingPriceHT: 99000,
+          features: [
+            'Tarif compétitif',
+            'Accès direct extérieur et visibilité enseigne',
+            'Faibles charges de copropriété',
+          ],
+          image: `${import.meta.env.BASE_URL}images/config-solo.jpg`,
+        },
+        {
           id: 'bureaux-rdc-medium',
           title: 'Plateau Bureau & Équipe',
           surfaceRange: '40 m² à 60 m²',
           idealFor:
             'Cabinet de conseil, agence immobilière ou d\'assurance, expert-comptable, avocat, cabinet d\'architecture, agence de communication, bureau d\'études — équipe de 2 à 4 collaborateurs',
-          startingPriceHT: 149000,
+          startingPriceHT: 129000,
           features: [
             'Aménagement flexible : Accueil + 2 à 3 bureaux cloisonnés',
             'Accès direct extérieur et visibilité enseigne',
-            'Faibles charges de copropriété',
           ],
           image: `${import.meta.env.BASE_URL}images/config-medium.jpg`,
         },
         {
           id: 'bureaux-rdc-large',
           title: 'Grand Plateau / Siège',
-          surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
+          surfaceRange: '+ de 70 m² (combinaison)',
           idealFor:
             'Siège social, centre d\'affaires ou espace coworking, cabinet pluridisciplinaire (conseil, RH, juridique, ingénierie), plateforme de services administratifs ou téléservices',
-          startingPriceHT: 199000,
+          startingPriceHT: 194000,
           features: [
             'Grands volumes aménageables',
             'Idéal pour mutualiser les coûts entre plusieurs associés ou activités',
@@ -236,7 +248,7 @@ export const projectData: ProjectData = {
           surfaceRange: '40 m² à 60 m²',
           idealFor:
             'Médecins, dentistes ou spécialistes souhaitant plus d\'espace pour leur équipe (assistant, plusieurs salles de soin)',
-          startingPriceHT: 149000,
+          startingPriceHT: 137000,
           features: [
             'Aménagement flexible',
             'Couloirs larges pour zone d\'attente patients',
@@ -247,10 +259,10 @@ export const projectData: ProjectData = {
         {
           id: 'sante-large',
           title: 'Grand Espace / Centre Paramédical',
-          surfaceRange: '75 m² à 80 m² (ou plus par combinaison)',
+          surfaceRange: '+ de 85 m² (combinaisons possibles également)',
           idealFor:
             'Cabinet de kinésithérapie, centre de santé pluridisciplinaire ou pôle bien-être regroupant plusieurs praticiens',
-          startingPriceHT: 199000,
+          startingPriceHT: 224000,
           features: [
             'Grands volumes aménageables : idéal pour salle d\'exercice et plateau technique',
             'Idéal pour mutualiser les coûts entre plusieurs associés ou activités',
